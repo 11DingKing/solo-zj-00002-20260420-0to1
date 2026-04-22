@@ -36,13 +36,13 @@ export interface StockOutData {
 }
 
 export function stockIn(data: StockInData) {
-  return request.post('/transactions/in', data)
+  return request.post('transactions/in', data)
 }
 
 export function stockOut(data: StockOutData) {
-  return request.post('/transactions/out', data)
+  return request.post('transactions/out', data)
 }
 
 export function getTransactions(params?: TransactionParams) {
-  return request.get('/transactions', { params })
+  return request.get('transactions', { params })
 }

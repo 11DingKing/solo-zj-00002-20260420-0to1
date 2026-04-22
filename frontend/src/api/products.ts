@@ -29,25 +29,25 @@ export interface ProductForm {
 }
 
 export function getProducts(params?: ProductParams) {
-  return request.get('/products', { params })
+  return request.get('products', { params })
 }
 
 export function getProduct(id: number) {
-  return request.get(`/products/${id}`)
+  return request.get(`products/${id}`)
 }
 
 export function getCategories() {
-  return request.get('/products/categories')
+  return request.get('products/categories')
 }
 
 export function createProduct(data: ProductForm) {
-  return request.post('/products', data)
+  return request.post('products', data)
 }
 
 export function updateProduct(id: number, data: Partial<ProductForm>) {
-  return request.put(`/products/${id}`, data)
+  return request.put(`products/${id}`, data)
 }
 
 export function deleteProduct(id: number) {
-  return request.delete(`/products/${id}`)
+  return request.delete(`products/${id}`)
 }

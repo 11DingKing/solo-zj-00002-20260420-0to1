@@ -7,9 +7,9 @@ export interface DashboardStats {
 }
 
 export function getDashboardStats() {
-  return request.get('/dashboard/stats')
+  return request.get('dashboard/stats')
 }
 
 export function getStockWarnings() {
-  return request.get('/dashboard/warnings')
+  return request.get('dashboard/warnings')
 }
