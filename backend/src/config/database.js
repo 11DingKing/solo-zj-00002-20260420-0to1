@@ -9,7 +9,17 @@ const pool = mysql.createPool({
   charset: 'utf8mb4',
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  enableKeepAlive: true,
+  keepAliveInitialDelay: 0
 });
+
+export const getConnection = async () => {
+  const connection = await pool.getConnection();
+  await connection.query("SET NAMES 'utf8mb4'");
+  await connection.query("SET CHARACTER SET utf8mb4");
+  await connection.query("SET character_set_connection=utf8mb4");
+  return connection;
+};
 
 export default pool;

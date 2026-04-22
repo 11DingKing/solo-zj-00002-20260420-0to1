@@ -166,10 +166,10 @@ router.get('/', async (req, res) => {
     dataSql += ' ORDER BY it.created_at DESC LIMIT ? OFFSET ?';
     params.push(pageSizeNum, offset);
 
-    const [countResult] = await pool.execute(countSql, countParams);
+    const [countResult] = await pool.query(countSql, countParams);
     const total = countResult[0].total;
 
-    const [rows] = await pool.execute(dataSql, params);
+    const [rows] = await pool.query(dataSql, params);
 
     res.json({
       success: true,
