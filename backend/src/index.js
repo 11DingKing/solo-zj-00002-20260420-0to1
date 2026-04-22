@@ -7,8 +7,13 @@ import dashboardRoutes from './routes/dashboard.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use((req, res, next) => {
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  next();
+});
+
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ charset: 'utf-8' }));
 
 app.use('/api/products', productRoutes);
 app.use('/api/transactions', transactionRoutes);
