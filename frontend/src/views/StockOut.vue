@@ -20,7 +20,16 @@
           </el-input>
         </el-form-item>
         <el-form-item label="出库数量" prop="quantity">
-          <el-input-number v-model="form.quantity" :min="1" :max="currentStock" style="width: 100%" />
+          <el-input-number 
+            v-model="form.quantity" 
+            :min="1" 
+            :max="currentStock > 0 ? currentStock : 999999" 
+            :disabled="currentStock === 0 || form.product_id === 0"
+            style="width: 100%" 
+          />
+          <el-text v-if="currentStock === 0 && form.product_id !== 0" type="danger" size="small">
+            该商品库存为 0，无法出库
+          </el-text>
         </el-form-item>
         <el-form-item label="出库原因" prop="reason">
           <el-select v-model="form.reason" placeholder="请选择出库原因" style="width: 100%">
